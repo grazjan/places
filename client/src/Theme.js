@@ -30,6 +30,9 @@ export const theme = createTheme({
         fontFamily: "'Source Sans Pro', 'Helvetica', 'Arial', sans-serif", 
         fontSize: 16
     },
+    shape: {
+        borderRadius: borderRadius.medium
+    },
     components: {
         MuiButton: {
             styleOverrides: {
