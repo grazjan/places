@@ -1,4 +1,4 @@
-import { Avatar, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import { Avatar, Drawer, List, ListItem, ListItemButton, ListItemText, Box } from '@mui/material'
 
 import StarIcon from '@mui/icons-material/Star';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
@@ -7,14 +7,17 @@ import InfoIcon from '@mui/icons-material/Info';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import styled from '@emotion/styled';
 import SettingsOutlined from '@mui/icons-material/SettingsOutlined';
+import Logo from '../../images/logo.png';
+import { grey } from '@mui/material/colors';
+
 
 
 const menuItems = [
-    { label: "Discover", name: "discover", icon: <TravelExploreIcon fontSize="large" />, onlyMobile: false },
-    { label: "My Favorites", name: "my-favorites", icon: <StarIcon fontSize="large" />, onlyMobile: false },
+    { label: "Discover", name: "discover", icon: <TravelExploreIcon color="primary" fontSize="large" />, onlyMobile: false },
+    { label: "My Favorites", name: "my-favorites", icon: <StarIcon color="disabled" fontSize="large" />, onlyMobile: false },
     { label: '', name: 'avatar', icon: <Avatar alt="User avatar">G</Avatar>, onlyMobile: true },
-    { label: "My own places", name: "own-places", icon: <PushPinIcon fontSize="large" />, onlyMobile: false },
-    { label: "", name: "settings", icon: <SettingsOutlined fontSize="large" />, onlyMobile: true },
+    { label: "My own places", name: "own-places", icon: <PushPinIcon color="disabled" fontSize="large" />, onlyMobile: false },
+    { label: "", name: "settings", icon: <SettingsOutlined color="disabled" fontSize="large" />, onlyMobile: true },
     // { label: "About", name: "about", icon: <InfoIcon color="info" fontSize="large" /> },
     // { label: "Share your visited place", name: "share-visited", icon: <AddBoxIcon color="success" fontSize="large" /> }
 ]
@@ -24,7 +27,7 @@ const StyledMenu = styled(Drawer)((props) => (({theme}) => ({
     '& .MuiDrawer-paper': { 
         boxSizing: 'border-box', 
         width: props.sidebarWidth+"px",
-        top: props.headerHeight
+        padding: `${theme.spacing(2)} 0px`
     },
     '& .MuiButtonBase-root': {
         display: 'block',
@@ -33,7 +36,7 @@ const StyledMenu = styled(Drawer)((props) => (({theme}) => ({
         '& .MuiListItemText-root': {
             margin: 0,
             '& .MuiTypography-root': {
-                fontWeight: 600,
+                fontWeight: 500,
                 lineHeight: 1.25,
             }
         }
@@ -59,7 +62,7 @@ const StyledMenu = styled(Drawer)((props) => (({theme}) => ({
     },
 })))
 
-const Menu = ({ sidebarWidth, headerHeight }) => {
+const Menu = ({ sidebarWidth }) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
@@ -67,13 +70,16 @@ const Menu = ({ sidebarWidth, headerHeight }) => {
             container={container}
             variant="permanent"
             sidebarWidth={sidebarWidth}
-            headerHeight={headerHeight}
             open={true}
             className="bottom-mobile"
             ModalProps={{
                 keepMounted: true
             }}
         > 
+      
+            <Box sx={{ display: { xs: "none", sm: "block" }, mb: 2 }}  textAlign="center">
+                <img src={Logo} width="64" height="64" alt="Places logo" />
+            </Box>
             <List itemScope itemType="http://www.schema.org/SiteNavigationElement" disablePadding> 
                 {menuItems.map(item=> (
                     <ListItem sx={{ display: { sm: item.onlyMobile ? 'none' : 'block' } }} key={item.name} role="menuitem" itemProp='name' disablePadding >

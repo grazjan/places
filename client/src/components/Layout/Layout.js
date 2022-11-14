@@ -11,10 +11,10 @@ const Layout = ({ children }) => {
     return (
         <>
         <Box component="header">
-            <Navbar height={headerHeight} />
+            <Navbar height={headerHeight} sidebarWidth={siderbarWidth} />
         </Box>
         <Box component="nav">
-            <Menu headerHeight={headerHeight} sidebarWidth={siderbarWidth} />
+            <Menu sidebarWidth={siderbarWidth} />
         </Box>
         <Box component="main" sx={{ mt: headerHeight+"px", ml: { xs: 0, sm: siderbarWidth+"px" } }}>
             {children}
