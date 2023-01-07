@@ -30,9 +30,6 @@ export const theme = createTheme({
         fontFamily: "'Source Sans Pro', 'Helvetica', 'Arial', sans-serif", 
         fontSize: 16
     },
-    shape: {
-        borderRadius: borderRadius.medium
-    },
     components: {
         MuiButton: {
             styleOverrides: {
@@ -40,6 +37,9 @@ export const theme = createTheme({
                     borderRadius: borderRadius.medium,
                     padding: button.padding,
                     border: "none",
+                    fontWeight: 'bold',
+                    textDecoration: "none",
+                    fontSize: 18,
                     '&:hover': {
                         backgroundColor: button.hoverColor
                     }
@@ -47,6 +47,9 @@ export const theme = createTheme({
                 outlined: {
                     borderRadius: borderRadius.medium,
                     padding: button.padding,
+                    textDecoration: "none",
+                    fontWeight: 'bold',
+                    fontSize: 18,
                     '&:hover': {
                         backgroundColor: button.hoverColor,
                         borderColor: button.hoverColor,
@@ -55,5 +58,10 @@ export const theme = createTheme({
                 }
             }
         }
+    },
+    shape: {
+        borderRadiusSmall: borderRadius.small,
+        borderRadiusMedium: borderRadius.medium,
+        borderRadiusLarge: borderRadius.large
     }
 });
