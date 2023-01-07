@@ -3,12 +3,13 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import styled from '@emotion/styled';
 
 const StyledErrorHandler = styled(Box)(({ theme }) => ({
+    textAlign: "center",
     '& .MuiSvgIcon-root': {
         fontSize: "4rem"
     }
 }))
 
-const ErrorHandler = ({ message, callback }) => {
+const ErrorHandler = ({ message, callback, buttonText }) => {
   return (
     <StyledErrorHandler>
         <Box display="flex" flexDirection="column" alignItems="center" mb={3}>
@@ -18,8 +19,8 @@ const ErrorHandler = ({ message, callback }) => {
             </strong>
         </Box>
         {callback && 
-            <Button variant='contained' onClick={callback}>
-                Try again
+            <Button variant='contained' onClick={() => callback()}>
+                {buttonText ? buttonText : "Try again"}
             </Button>
         }
     </StyledErrorHandler>
