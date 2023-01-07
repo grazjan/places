@@ -3,6 +3,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import mongoose from "mongoose";
 import placesRoutes from './routes/places.js';
+import uploadRoutes from './routes/upload.js';
 
 
 //Dotenv
@@ -16,6 +17,8 @@ app.use(express.json());
 
 //Routes
 app.use('/places', placesRoutes)
+app.use('/upload', uploadRoutes)
+app.use("/upload", express.static("./upload"))
 
 
 // MongoDB connection
