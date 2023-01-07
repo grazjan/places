@@ -6,6 +6,7 @@ const placeSchema = mongoose.Schema({
     images: [String],
     lat: Number,
     long: Number,
+    city: String,
     countryCode: String,
     location: String,
     tags: [String],
