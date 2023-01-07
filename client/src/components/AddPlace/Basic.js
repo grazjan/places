@@ -10,13 +10,13 @@ const Basic = ({ handleForm, formData }) => {
     </Box>
     <Box component="form">
         <TextField
-            name="name"
+            name="title"
             label="Name"
             fullWidth
             sx={{ mb: 2 }}
-            value={formData.name}
+            value={formData.title}
             onChange={handleForm}
-            InputLabelProps={{ shrink: formData.name ? true : false }}
+            InputLabelProps={{ shrink: formData.title ? true : false }}
         />
         <Box display="flex" gap={2}>
             <TextField

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Box, TextareaAutosize } from '@mui/material'
+import { Box, TextareaAutosize, TextField } from '@mui/material'
 import React from 'react'
 
 const StyledTextArea = styled(TextareaAutosize)({
@@ -10,14 +10,17 @@ const StyledTextArea = styled(TextareaAutosize)({
 const Description = ({ handleForm, formData }) => {
   return (
     <Box component="form">
-        <StyledTextArea 
+        <TextField 
             aria-label="Description"
             placeholder='Describe visited place...'
             name="description"
+            label="Description"
             autoFocus
-            defaultValue={formData.description}
+            value={formData.description}
             onChange={handleForm}
-            minRows={10}
+            fullWidth
+            multiline
+            rows={8}
         />
     </Box>
   )
