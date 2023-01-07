@@ -9,15 +9,16 @@ import styled from '@emotion/styled';
 import SettingsOutlined from '@mui/icons-material/SettingsOutlined';
 import Logo from '../../images/logo.png';
 import { grey } from '@mui/material/colors';
+import { Link } from 'react-router-dom';
 
 
 
 const menuItems = [
-    { label: "Discover", name: "discover", icon: <TravelExploreIcon color="primary" fontSize="large" />, onlyMobile: false },
-    { label: "My Favorites", name: "my-favorites", icon: <StarIcon color="disabled" fontSize="large" />, onlyMobile: false },
-    { label: '', name: 'avatar', icon: <Avatar alt="User avatar">G</Avatar>, onlyMobile: true },
-    { label: "My own places", name: "own-places", icon: <PushPinIcon color="disabled" fontSize="large" />, onlyMobile: false },
-    { label: "", name: "settings", icon: <SettingsOutlined color="disabled" fontSize="large" />, onlyMobile: true },
+    { label: "Discover", name: "discover", icon: <TravelExploreIcon color="primary" fontSize="large" />, onlyMobile: false, path: "/" },
+    { label: "My Favorites", name: "my-favorites", icon: <StarIcon color="disabled" fontSize="large" />, onlyMobile: false, path: "/favorites"  },
+    { label: '', name: 'avatar', icon: <Avatar alt="User avatar">G</Avatar>, onlyMobile: true, path: "/user"  },
+    { label: "My own places", name: "own-places", icon: <PushPinIcon color="disabled" fontSize="large" />, onlyMobile: false, path: "/own-places"  },
+    { label: "", name: "settings", icon: <SettingsOutlined color="disabled" fontSize="large" />, onlyMobile: true, path: "/settings"  },
     // { label: "About", name: "about", icon: <InfoIcon color="info" fontSize="large" /> },
     // { label: "Share your visited place", name: "share-visited", icon: <AddBoxIcon color="success" fontSize="large" /> }
 ]
@@ -33,10 +34,16 @@ const StyledMenu = styled(Drawer)((props) => (({theme}) => ({
         display: 'block',
         textAlign: "center",
         padding: theme.spacing(2),
+        '& > a': {
+            textDecoration: 'none',
+            color: theme.palette.text.primary,
+            fontWeight: 500,
+            lineHeight: 1.25,
+        },
         '& .MuiListItemText-root': {
             margin: 0,
             '& .MuiTypography-root': {
-                fontWeight: 500,
+                fontWeight: 'bold',
                 lineHeight: 1.25,
             }
         }
@@ -84,8 +91,10 @@ const Menu = ({ sidebarWidth }) => {
                 {menuItems.map(item=> (
                     <ListItem sx={{ display: { sm: item.onlyMobile ? 'none' : 'block' } }} key={item.name} role="menuitem" itemProp='name' disablePadding >
                         <ListItemButton>
-                            {item.icon}
-                            <ListItemText primary={item.label} />
+                            <Link to={item.path}>
+                                {item.icon}
+                                <ListItemText primary={item.label} />
+                            </Link>
                         </ListItemButton>
                     </ListItem>
                 ))}
