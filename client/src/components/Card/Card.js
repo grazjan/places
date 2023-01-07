@@ -9,6 +9,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 const StyledCard = styled(MuiCard)(({ theme }) => ({
     position: 'relative',
+    borderRadius: theme.shape.borderRadiusSmall,
     '&:hover': {
         '& .MuiCardContent-root': {
             opacity: 1,
@@ -25,7 +26,7 @@ const StyledCard = styled(MuiCard)(({ theme }) => ({
         bottom: 0,
         background: 'rgba(0, 0, 0, 0.6)',
         color: '#fff',
-        transition: 'opacity .4s',
+        transition: 'all .4s',
         '& .MuiCardActions-root': {
             display: 'flex',
             justifyContent: 'flex-end',
@@ -43,12 +44,12 @@ const StyledCard = styled(MuiCard)(({ theme }) => ({
 const Card = ({ item }) => {
 
     return (
-        <Link>
+        <Link to={`/place/${item._id}`}>
             <StyledCard>
                 <Image 
                     alt="Card Image"
                     height={300}
-                    src="https://media0.faz.net/ppmedia/aktuell/feuilleton/4064334889/1.7717112/default-retina/paradiesischer-strand-der-maya.jpg"
+                    src={item.images[0]}
                 />
                 <CardContent>
                     <CardActions>
@@ -61,10 +62,10 @@ const Card = ({ item }) => {
                     </CardActions>
                     <Box class="card-description">
                         <Typography gutterBottom variant='h6' component="strong">
-                            Card Titel
+                            {item.title}
                         </Typography> 
                         <Typography variant="body2" component="p">
-                            Kroatien
+                            {item.location}
                         </Typography>
                     </Box>
                 </CardContent>
