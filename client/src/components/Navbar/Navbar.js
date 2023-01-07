@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { AppBar, Avatar, Box, IconButton, Input, InputAdornment, Toolbar } from '@mui/material'
+import { AppBar, Avatar, Box, Button, IconButton, Input, InputAdornment, Toolbar } from '@mui/material'
 import styled from '@emotion/styled';
 import { grey } from '@mui/material/colors';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Logo from '../../images/logo.png';
+import { Link } from 'react-router-dom';
 
 
 /* styled */
 const StyledAppbar = styled(AppBar)(({ theme }) => (props) => ({
-    padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
+    padding: `${theme.spacing(2)} ${theme.spacing(2)}`,
     border: 'none',
     background: '#fff',
     left: props.sidebarWidth+"px",
@@ -27,7 +28,7 @@ const Search = styled(Input)(({ theme }) => ({
     width: "100%",
     background: grey[200],
     padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.shape.borderRadiusMedium,
     '& .MuiSvgIcon': {
         marginRight: theme.spacing(1)
     }
@@ -60,7 +61,10 @@ const Navbar = ({ headerHeight, sidebarWidth }) => {
                         }
                     />
                 </Box>
-                <Box ml={5} sx={{ display: { xs: 'none', sm: 'block' } }}>
+                <Button sx={{ ml: 2 }} to="/create" as={Link} variant="contained">
+                    Add place
+                </Button>
+                <Box ml={2} sx={{ display: { xs: 'none', sm: 'block' } }}>
                     <IconButton>
                         <SettingsOutlinedIcon/>
                     </IconButton>
