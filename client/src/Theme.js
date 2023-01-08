@@ -1,5 +1,15 @@
 import { createTheme } from '@mui/material'
 
+/* Colors */
+const colors = {
+    primary: '#ff3838',
+    secondary: '#ff9f1a',
+    text: {
+        primary: '#2d3436',
+        icon: '#2d3436' 
+    }
+}
+
 /* Border radius */
 const borderRadius = {
     small: "10px",
@@ -16,14 +26,14 @@ const button = {
 export const theme = createTheme({
     palette: {
         primary: {
-            main: '#ff3838'
+            main: colors.primary
         },
         secondary: {
-            main: '#ff9f1a'
+            main: colors.secondary
         },
         text: {
-            primary: '#2d3436',
-            icon: '#2d3436'
+            primary: colors.text.primary,
+            icon: colors.text.icon
         }
     },
     typography: {
@@ -54,6 +64,26 @@ export const theme = createTheme({
                         backgroundColor: button.hoverColor,
                         borderColor: button.hoverColor,
                         color: '#fff',
+                    }
+                }
+            }
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-focused": {
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: `1px solid ${colors.text.primary}`
+                        },
+                    }
+                }
+            }
+        },
+        MuiFormLabel: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-focused": { 
+                            color: colors.text.primary
                     }
                 }
             }
