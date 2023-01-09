@@ -32,7 +32,8 @@ const Create = () => {
         country: '',
         countryCode: '',
         description: '',
-        visited: '',
+        lat: '',
+        long: '',
         images: []
     })
 
@@ -64,6 +65,15 @@ const Create = () => {
         let imagesArr = formData.images;
         imagesArr.push(files);
         setFormData({ ...formData, images: imagesArr });
+    }
+
+    const handleCoords = (location) => {
+        setFormData({
+            ...formData,
+            lat: location.lat,
+            long: location.long,
+            country: location.country
+        })
     }
 
     const handleSubmit = () => {
@@ -101,7 +111,7 @@ const Create = () => {
 
         {/* Multistep form */}
         <Container maxWidth="md" sx={{ mt: 3 }}>
-            {currentStep.label === "Location" && <Basic formData={formData} handleForm={handleForm}/>}
+            {currentStep.label === "Location" && <Basic formData={formData} handleForm={handleForm} handleCoords={handleCoords} />}
             {currentStep.label === "Description" && <Description formData={formData} handleForm={handleForm}/>}
             {currentStep.label === "Media" && <Media formData={formData} handleForm={handleForm} handleUpload={handleUpload} />}
         </Container>
@@ -109,7 +119,7 @@ const Create = () => {
          {/* Form buttons */}
          <Box textAlign="center" mt={10}>
             {currentStep.step !== steps[0].step && 
-                <Button sx={{ mr: 2 }} variant='outlined' onClick={() => setCurrentStep(steps[currentStep.step-2])}>Previous Step</Button>
+                <Button sx={{ mr: 2 }} variant='outlined' onClick={() => setCurrentStep(steps[currentStep.step-2])} basi >Previous Step</Button>
             }
             {currentStep.step !== steps[steps.length-1].step && 
                 <Button variant='contained' onClick={() => setCurrentStep(steps[currentStep.step])}>Next step</Button>
